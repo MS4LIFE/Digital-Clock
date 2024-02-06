@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            border-style: border-box;
+            font-family: sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #d3d3d3;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 13px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border: 2px solid #632df8;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #632df8;
+            padding: 10px 0 10px 0;
+            margin: 0 0 10px 0;
+            overflow: hidden;
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .clock {
+            text-align: center;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .time-element {
+            font-size: 50px;
+            font-weight: bold;
+            color: black;
+            margin: 0 10px;
+        }
+
+        .colon-element {
+            font-size: 32px;
+            font-weight: bold;
+            color: #444444;
+            margin: 0 10px;
+        }
+    </style>
+
+
+    <div class="container">
+        <div class="card">
+            <h1>Digital Clock</h1>
+            <div class="clock">
+                <span class="time-element" id="hours">00</span>
+                <span class="colon-element">:</span>
+                <span class="time-element" id="minutes">00</span>
+                <span class="colon-element">:</span>
+                <span class="time-element" id="seconds">00</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        function updateClock() {
+
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+
+            // Two digit number
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+
+
+            const hoursElement = document.getElementById("hours");
+            const minutesElement = document.getElementById("minutes");
+            const secondsElement = document.getElementById("seconds");
+
+
+            hoursElement.textContent = hours;
+            minutesElement.textContent = minutes;
+            secondsElement.textContent = seconds;
+        }
+
+        setInterval(updateClock, 1000);
+
+    </script>
+</body>
+
+</html>
